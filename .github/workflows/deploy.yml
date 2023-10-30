@@ -1,0 +1,59 @@
+name: "Deploy 🚀"
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: "Deploy 🚀"
+    strategy:
+      matrix:
+        scheme:
+          - "Swiftfin"
+          - "Swiftfin tvOS"
+          
+    runs-on: macos-13
+    
+    steps:    
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Install SwiftGen
+        run: brew install swiftgen
+      
+      - name: Cache Carthage
+        uses: actions/cache@v3
+        id: carthage-cache
+        with:
+          path: Carthage
+          key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+          restore-keys: ${{ runner.os }}-carthage-
+      
+      - name: Cache Swift packages
+        uses: actions/cache@v3
+        with:
+          path: PackageCache
+          key: ${{ runner.os }}-${{ matrix.scheme }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: ${{ runner.os }}-${{ matrix.scheme }}-spm-
+      
+      - name: Archive
+        uses: nick-fields/retry@v2
+        with:
+          max_attempts: 3
+          retry_on: error
+          timeout_minutes: 60
+          command: |
+            xcodebuild -exportArchive -project "Swiftfin.xcodeproj" \
+            -scheme "${{ matrix.scheme }}" \
+            -clonedSourcePackagesDirPath PackageCache \
+            -archivePath "archive/${{ matrix.scheme }}.xcarchive" \
+            -exportPath "archive/"      
+
+      - name: 'Upload app to TestFlight'
+        uses: apple-actions/upload-testflight-build@v1
+        with: 
+          app-path: 'archive/${{ matrix.scheme }}.ipa' 
+          issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
+          api-key-id: ${{ secrets.APPSTORE_API_KEY_ID }}
+          api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}

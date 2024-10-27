@@ -1,5 +1,5 @@
 {
-  "originHash" : "323b2ad9aaa9c000faf264d68272f0e9fab1349d9f910a0b95ee6aea10460f31",
+  "originHash" : "651194fc1966b57201a0de2cba27dc40798bbdf515febdc83f00d634d916fea4",
   "pins" : [
     {
       "identity" : "blurhashkit",
@@ -69,8 +69,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/hmlongco/Factory",
       "state" : {
-        "revision" : "587995f7d5cc667951d635fbf6b4252324ba0439",
-        "version" : "2.3.2"
+        "revision" : "f350e0d71ba241b392f70519a67e769d5e3858d4",
+        "version" : "2.4.1"
       }
     },
     {
@@ -114,8 +114,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/guoyingtao/Mantis",
       "state" : {
-        "revision" : "ccc498ea429774d948a0a8aacacde207f7ffff48",
-        "version" : "2.21.0"
+        "revision" : "ee618177c1cee21fc36c76a60d6f5761f708d1b8",
+        "version" : "2.23.0"
       }
     },
     {
@@ -123,8 +123,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kean/Nuke",
       "state" : {
-        "revision" : "7395c7a9dcd390bbcfad17a731d8d529602702c6",
-        "version" : "12.7.0"
+        "revision" : "0ead44350d2737db384908569c012fe67c421e4d",
+        "version" : "12.8.0"
       }
     },
     {
@@ -159,8 +159,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SVGKit/SVGKit",
       "state" : {
-        "revision" : "58152b9f7c85eab239160b36ffdfd364aa43d666",
-        "version" : "3.0.0"
+        "branch" : "3.x",
+        "revision" : "6f75e96948fa72fa5ebc5d1f0bfa761a5614c546"
       }
     },
     {

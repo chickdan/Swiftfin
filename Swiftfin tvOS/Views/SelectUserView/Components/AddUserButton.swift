@@ -61,6 +61,7 @@ extension SelectUserView {
                 .buttonStyle(.card)
                 .buttonBorderShape(.circleBackport)
                 .disabled(!isEnabled)
+                .padding(.bottom, 20)
 
                 Text("Add User")
                     .font(.title3)

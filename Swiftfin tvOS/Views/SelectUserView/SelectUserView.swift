@@ -200,6 +200,7 @@ struct SelectUserView: View {
                     viewModel: viewModel
                 )
             }
+            .padding(.bottom, 50)
         }
         .animation(.linear(duration: 0.1), value: scrollViewOffset)
         .background {
